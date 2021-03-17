@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>it.zerko</groupId>
+    <artifactId>teamchooser</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven-compiler-plugin.source>${project.maven-compiler-plugin}</maven-compiler-plugin.source>
+        <maven-compiler-plugin.target>${project.maven-compiler-plugin}</maven-compiler-plugin.target>
+        <lombok.version>1.18.12</lombok.version>
+        <project.maven-compiler-plugin>13</project.maven-compiler-plugin>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${maven-compiler-plugin.source}</source>
+                    <target>${maven-compiler-plugin.target}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
