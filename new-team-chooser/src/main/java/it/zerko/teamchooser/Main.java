@@ -35,8 +35,9 @@ public class Main {
       .generateAllObjects()
       .stream()
       .map(combination -> new Combination(players, combination))
-      .filter(combination -> filterTeam(combination.getFirstTeam(), "ignac8", "Koala"))
-      .filter(combination -> filterTeam(combination.getSecondTeam()))
+      .filter(combination -> keepTogether(combination, "ignac8", "Koala", "Baleron"))
+      .filter(combination -> keepTogether(combination, "Mr. Sandman", "yayebie"))
+      .filter(combination -> !keepTogether(combination, "dzast.da.breslau", "Mr. Sandman"))
       .filter(combination -> combination.getFirstTeam().getPlayers().size() == teamSize)
       .sorted()
       .findFirst()
@@ -47,8 +48,13 @@ public class Main {
     boolean debug = true;
   }
 
-  private static boolean filterTeam(Team team, String... nicknames) {
-    return team.getPlayers()
+  private static boolean keepTogether(Combination combination, String... nicknames) {
+    return isTogether(combination.getFirstTeam(), nicknames) || isTogether(combination.getSecondTeam(), nicknames);
+  }
+
+  private static boolean isTogether(Team team, String[] nicknames) {
+    return team
+      .getPlayers()
       .stream()
       .map(Player::getNickname)
       .collect(Collectors.toList())
